@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "scaf"
+name = "smaf"
 version = "0.1.0"
 description = "Smart, code-aware functions."
 authors = ["Joaquín Ossandon <jossandonstanke@gmail.com>"]

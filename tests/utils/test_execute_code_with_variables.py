@@ -2,7 +2,7 @@ from textwrap import dedent
 
 import pytest
 
-from scaf.utils.execute_code_with_variables import (
+from smaf.utils.execute_code_with_variables import (
     execute_code_with_variables,
 )
 

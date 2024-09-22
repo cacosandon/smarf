@@ -1,4 +1,4 @@
-from scaf.utils.get_data_around_call import CallData
+from smaf.utils.get_data_around_call import CallData
 
 from .smart_call import smart_call
 

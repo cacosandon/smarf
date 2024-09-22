@@ -2,7 +2,7 @@ from textwrap import dedent
 
 from openai.types.chat.chat_completion_message_param import ChatCompletionMessageParam
 
-from scaf.utils.get_data_around_call import CallData
+from smaf.utils.get_data_around_call import CallData
 
 
 class SmartCallPrompt:

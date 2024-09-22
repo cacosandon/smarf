@@ -1,4 +1,4 @@
-from scaf.smart_call import smart_call
+from smaf.smart_call import smart_call
 
 
 def get_country_data(city: str):

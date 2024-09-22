@@ -3,12 +3,12 @@ from typing import Any
 
 import openai
 
-from scaf.smart_call.prompts import SmartCallPrompt
-from scaf.utils.execute_code_with_variables import (
+from smaf.smart_call.prompts import SmartCallPrompt
+from smaf.utils.execute_code_with_variables import (
     execute_code_with_variables,
 )
-from scaf.utils.get_data_around_call import get_data_around_call
-from scaf.utils.logging import log
+from smaf.utils.get_data_around_call import get_data_around_call
+from smaf.utils.logging import log
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 

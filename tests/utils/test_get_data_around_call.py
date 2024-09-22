@@ -1,4 +1,4 @@
-from scaf.utils.get_data_around_call import get_data_around_call
+from smaf.utils.get_data_around_call import get_data_around_call
 
 
 def test_get_data_around_call():
