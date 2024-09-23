@@ -37,8 +37,24 @@ def get_data_around_call(target_depth: Optional[int] = None) -> CallData:
     if target_frame is None:
         raise ValueError(f"No target frame found at depth {target_depth}")
 
-    source_lines, _ = inspect.getsourcelines(target_frame.f_code)
-    code = "\n".join(source_lines)
-    variables = {name: str(value) for name, value in target_frame.f_locals.items()}
+    file_path = inspect.getfile(target_frame)
+    is_module_level = target_frame.f_code.co_name == "<module>"
+
+    if is_module_level:
+        with open(file_path, "r") as file:
+            code = file.read()
+    else:
+        source_lines, _ = inspect.getsourcelines(target_frame.f_code)
+        code = "\n".join(source_lines)
+
+    variables: dict[str, str | int] = {
+        name: str(value)
+        for name, value in target_frame.f_locals.items()
+        if not name.startswith("__")
+    }
+
+    # Add some useful context variables
+    variables["__file__"] = file_path
+    variables["__current_call_line_number__"] = target_frame.f_lineno
 
     return CallData(code=code, variables=variables)

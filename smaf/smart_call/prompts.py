@@ -12,7 +12,9 @@ class SmartCallPrompt:
             f"""\
             You are an intelligent code generator with context awareness.
 
-            Your task is to produce executable Python code that will serve as the return value for the 'smart_call' function, without using any external libraries.
+            Your task is to produce executable Python code that will serve as the return value for the `smart_call` function, without using any external libraries.
+
+            Remember that `smart_call` could be invoked multiple times, so make sure to return the appropiate result based on the line number where it's invoked.
 
             This code is for one-time use, so be as efficient as possible.
 
