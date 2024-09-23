@@ -66,5 +66,20 @@ def smart_call(*args, **kwargs) -> Any:
     )
 
 
-def _get_code_from_response(response: str):
-    return response.split("<output_code>")[1].split("</output_code>")[0]
+def _get_code_from_response(response: str) -> str:
+    response = response.strip()
+    start_blocks = ["```python", "```"]
+    end_block = "```"
+
+    for start_block in start_blocks:
+        start = response.find(start_block)
+        if start != -1:
+            start += len(start_block)
+            end = response[start:].find(end_block)
+
+            if end != -1:
+                return response[start : start + end].strip()
+
+            return response[start:].strip()
+
+    return response

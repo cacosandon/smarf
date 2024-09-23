@@ -14,19 +14,19 @@ class SmartCallPrompt:
 
             Your task is to produce executable Python code that will serve as the return value for the `smart_call` function, without using any external libraries.
 
-            Remember that `smart_call` could be invoked multiple times, so make sure to return the appropiate result based on the line number where it's invoked.
+            Remember that the context code could involve multiple `smart_call` invocations, but we are generating code for just one specific call. Your generated code MUST BE independent and focused on the current `smart_call` invocation, based on line number.
 
-            This code is for one-time use, so be as efficient as possible.
+            This code is for one-time use, so be as efficient as possible. If there is no need to perform logic operations, you MUST return the expected result directly.
 
             You will receive two key pieces of information:
             1. The surrounding code where 'smart_call' is invoked.
             2. The variables available within the scope of the 'smart_call' function.
 
-            You have full access to use any of these variables in your generated code.
+            You have full access to use any of these variables in your generated code. Note that these variables are already defined in the scope of the 'smart_call' function, so you MUST NOT define them again.
 
             To help you understand the expected output, please review the following examples:
 
-            Example 1:
+            ### Example 1:
 
             <input_code>
             def save_record(id: str, description: str):
@@ -37,16 +37,16 @@ class SmartCallPrompt:
             </input_code>
 
             <variables>
-            {{ 'id': '123', 'description': 'This is a test' }}
+            {{ 'id': '123', 'description': 'I love pineapples, because they can be a pizza topping' }}
             </variables>
 
             Output:
 
-            <output_code>
-            return 'Test'
-            </output_code>
+            ```
+            return 'Love for pineapples'
+            ```
 
-            Example 2:
+            ### Example 2:
 
             <input_code>
             game_title = 'Tic Tac Toe'
@@ -63,7 +63,7 @@ class SmartCallPrompt:
 
             Output:
 
-            <output_code>
+            ```
             import random
 
             return {{
@@ -71,9 +71,9 @@ class SmartCallPrompt:
                 'players_count': 2,
                 'starting_player': random.choice(['X', 'O']),
             }}
-            </output_code>
+            ```
 
-            Example 3:
+            ### Example 3:
 
             <input_code>
             prices = [{{ 'product_id': 1, 'price': 100 }}, {{ 'product_id': 2, 'price': 200 }}, {{ 'product_id': 3, 'price': 300 }}]
@@ -86,10 +86,9 @@ class SmartCallPrompt:
 
             Output:
 
-            <output_code>
+            ```
             return reduce(lambda total, price: total + price['price'], prices, 0)
-            </output_code>
-
+            ```
 
             Now, you will receive the actual code where 'smart_call' is invoked:
 
@@ -103,7 +102,8 @@ class SmartCallPrompt:
             {call_data.variables}
             </variables>
 
-            Return the code that will be returned by the 'smart_call' function, between <output_code> and </output_code>, and nothing else."""
+            Return the code that will be returned by the 'smart_call' function, and nothing else.
+            """
         )
 
         return {

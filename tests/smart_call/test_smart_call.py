@@ -29,11 +29,7 @@ def test_smart_call_basic_functionality(
     mock_get_data_around_call.return_value = MagicMock(variables={})
     mock_openai.chat.completions.create.return_value = MagicMock(
         choices=[
-            MagicMock(
-                message=MagicMock(
-                    content="<output_code>return 'test result'</output_code>"
-                )
-            )
+            MagicMock(message=MagicMock(content="```python\nreturn 'test result'\n```"))
         ]
     )
     mock_execute_code_with_variables.return_value = "test result"
@@ -55,11 +51,7 @@ def test_smart_call_with_args_and_kwargs(
     )
     mock_openai.chat.completions.create.return_value = MagicMock(
         choices=[
-            MagicMock(
-                message=MagicMock(
-                    content="<output_code>return f'{arg1} {kwarg1}'</output_code>"
-                )
-            )
+            MagicMock(message=MagicMock(content="```\nreturn f'{arg1} {kwarg1}'\n```"))
         ]
     )
     mock_execute_code_with_variables.return_value = "value1 value2"
