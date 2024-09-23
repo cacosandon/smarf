@@ -2,24 +2,24 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from smaf.smart_call.smart_call import smart_call
+from smarf.smart_call.smart_call import smart_call
 
 
 @pytest.fixture
 def mock_openai():
-    with patch("smaf.smart_call.smart_call.openai") as mock:
+    with patch("smarf.smart_call.smart_call.openai") as mock:
         yield mock
 
 
 @pytest.fixture
 def mock_get_data_around_call():
-    with patch("smaf.smart_call.smart_call.get_data_around_call") as mock:
+    with patch("smarf.smart_call.smart_call.get_data_around_call") as mock:
         yield mock
 
 
 @pytest.fixture
 def mock_execute_code_with_variables():
-    with patch("smaf.smart_call.smart_call.execute_code_with_variables") as mock:
+    with patch("smarf.smart_call.smart_call.execute_code_with_variables") as mock:
         yield mock
 
 

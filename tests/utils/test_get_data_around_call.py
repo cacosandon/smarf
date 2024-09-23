@@ -1,6 +1,6 @@
 import pytest
 
-from smaf.utils.get_data_around_call import get_data_around_call
+from smarf.utils.get_data_around_call import get_data_around_call
 
 
 def test_get_data_around_call():
@@ -47,7 +47,7 @@ def test_get_data_around_module_level_call(tmp_path):
     test_file = tmp_path / "test_module.py"
     test_file.write_text(
         """
-from smaf.utils.get_data_around_call import get_data_around_call
+from smarf.utils.get_data_around_call import get_data_around_call
 
 variable1 = "test"
 variable2 = 42

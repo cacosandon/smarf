@@ -3,12 +3,12 @@ from typing import Any
 
 import openai
 
-from smaf.smart_call.prompts import SmartCallPrompt
-from smaf.utils.execute_code_with_variables import (
+from smarf.smart_call.prompts import SmartCallPrompt
+from smarf.utils.execute_code_with_variables import (
     execute_code_with_variables,
 )
-from smaf.utils.get_data_around_call import get_data_around_call
-from smaf.utils.logging import log
+from smarf.utils.get_data_around_call import get_data_around_call
+from smarf.utils.logging import log
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 

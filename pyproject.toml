@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "smaf"
-version = "0.1.2"
+name = "smarf"
+version = "0.1.0"
 description = "Smart, code-aware functions."
 authors = ["Joaquín Ossandon <jossandonstanke@gmail.com>"]
 readme = "README.md"

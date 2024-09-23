@@ -1,26 +1,26 @@
-# SMAF: Smart, Code-Aware Functions
+# SMARF: Smart, Code-Aware Functions
 
-SMAF (Smart, Code-Aware Functions) is a Python library that provides intelligent, context-aware function calls using LLMs. It analyzes the context in which it's called and performs appropriate operations based on the available variables and inferred intent.
+SMARF (Smart, Code-Aware Functions) is a Python library that provides intelligent, context-aware function calls using LLMs. It analyzes the context in which it's called and performs appropriate operations based on the available variables and inferred intent.
 
 For now, it only works with OpenAI models (gpt-4o-mini). So set your `OPENAI_API_KEY` environment variable.
 
 ## Installation
 
-To install SMAF, use pip:
+To install SMARF, use pip:
 ```bash
-pip install smaf
+pip install smarf
 ```
 
 Or if you're using Poetry:
 
 ```bash
-poetry add smaf
+poetry add smarf
 ```
 
 ## Usage
 
 ```python
-from smaf.smart_call import smart_call
+from smarf.smart_call import smart_call
 
 def get_country_data(city: str):
     country_data = smart_call()
