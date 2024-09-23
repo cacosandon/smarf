@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "smaf"
-version = "0.1.0"
+version = "0.1.2"
 description = "Smart, code-aware functions."
 authors = ["Joaquín Ossandon <jossandonstanke@gmail.com>"]
 readme = "README.md"
@@ -10,10 +10,8 @@ python = "^3.11"
 openai = "^1.47.0"
 pydantic = "^2.9.2"
 
-
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.3"
-rich = "^13.8.1"
 
 [build-system]
 requires = ["poetry-core"]
