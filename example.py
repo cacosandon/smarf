@@ -2,12 +2,12 @@ from smaf.smart_call import smart_call
 
 
 def get_country_data(city: str):
-    country = smart_call(city)
+    country_data = smart_call()
 
     return {
-        "country_name": country["name"],
-        "country_code": country["code"],
-        "country_flag_emoji": country["emoji"],
+        "country_name": country_data["name"],
+        "country_code": country_data["code"],
+        "country_flag": country_data["flag_emoji"],
     }
 
 
