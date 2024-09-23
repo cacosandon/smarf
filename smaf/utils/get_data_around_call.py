@@ -9,7 +9,9 @@ class CallData(BaseModel):
     variables: dict
 
 
-def get_data_around_call(target_depth: Optional[int] = None) -> CallData:
+def get_data_around_call(
+    target_depth: Optional[int] = None,
+) -> CallData:
     """
     Get the code and variables around the call to this function.
 
@@ -44,7 +46,7 @@ def get_data_around_call(target_depth: Optional[int] = None) -> CallData:
         with open(file_path, "r") as file:
             code = file.read()
     else:
-        source_lines, _ = inspect.getsourcelines(target_frame.f_code)
+        source_lines, start_line = inspect.getsourcelines(target_frame.f_code)
         code = "\n".join(source_lines)
 
     variables: dict[str, str | int] = {
@@ -55,6 +57,12 @@ def get_data_around_call(target_depth: Optional[int] = None) -> CallData:
 
     # Add some useful context variables
     variables["__file__"] = file_path
-    variables["__current_call_line_number__"] = target_frame.f_lineno
+    variables["__call_line_number__"] = target_frame.f_lineno - start_line + 1
+
+    variables["__call_line__"] = (
+        inspect.getsource(target_frame)
+        .strip()
+        .split("\n")[variables["__call_line_number__"] - 1]
+    )
 
     return CallData(code=code, variables=variables)

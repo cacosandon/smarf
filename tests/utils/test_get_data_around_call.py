@@ -77,12 +77,6 @@ def test_multiple_calls_line_number():
 
     first, second, third = multiple_calls()
 
-    assert (
-        first.variables["__current_call_line_number__"]
-        == second.variables["__current_call_line_number__"] - 1
-    )
-
-    assert (
-        second.variables["__current_call_line_number__"]
-        == third.variables["__current_call_line_number__"] - 1
-    )
+    assert first.variables["__call_line_number__"] == 2
+    assert second.variables["__call_line_number__"] == 3
+    assert third.variables["__call_line_number__"] == 4
